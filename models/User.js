@@ -93,7 +93,7 @@ UserSchema.methods.getResetPasswordTokenFromUser = function() {
     this.resetPasswordExpire = Date.now() + parseInt(RESET_PASSWORD_EXPIRE);
 
     return resetPasswordToken;
-    //return resetPasswordToken;
+    
 };
 UserSchema.pre("save",function(next){
     //Parola Değişme 

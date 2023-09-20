@@ -7,7 +7,7 @@ const sendJwtToClient = (user,res) => {
     return res
     .status(200)
     .cookie("acces_token",token,{
-        httpOnly: true,
+        httpOnly: true, //Cookie'ye erişim sadece HTTP ve HTTPS aracılığıyla yapılabilir, JavaScript tarafından erişim engellenir
         expires : new Date(Date.now() + parseInt(JWT_COOKIE) * 1000 * 60),
         secure : NODE_ENV === "development" ? false : true
     })

@@ -2,6 +2,7 @@ const User = require("../models/User");
 const CustomError = require("../helpers/error/CustomError");
 const asyncErrorWrapper = require("express-async-handler");
 
+//Bu middleware, bir kullanıcının engelini açıp kapatmak için kullanılır
 const blockUser = asyncErrorWrapper(async(req, res, next) => {
     const {id} = req.params;
 
@@ -16,6 +17,7 @@ const blockUser = asyncErrorWrapper(async(req, res, next) => {
         message: "Block - Unblock Successfull"
     });
 });
+
 
 const deleteUser = asyncErrorWrapper(async (req, res, next) => {
     const {id} = req.params;

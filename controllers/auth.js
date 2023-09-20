@@ -47,8 +47,8 @@ const logout = asyncErrorWrapper(async (req, res, next) => {
     const {NODE_ENV} = process.env;
 
     return res.status(200).cookie({
-        httpOnly : true,
-        expires : new Date(Date.now()),
+        httpOnly : true,  //cookie'nin sadece HTTP ve HTTPS üzerinden erişilebilir olduğunu belirtir
+        expires : new Date(Date.now()), //tarayıcının cookie'yi hemen silmesini sağlar
         secure : NODE_ENV === "development" ? false : true
     }).json({
         success : true,
@@ -163,8 +163,8 @@ const editDetails = asyncErrorWrapper(async(req, res, next) => {
     const editInformation = req.body;
 
     const user = await User.findByIdAndUpdate(req.user.id,editInformation,{
-        new : true,
-        runValidators : true
+        new : true, //güncellenmiş kullanıcı verilerini döndürmesi sağlanır
+        runValidators : true //güncelleme işlemi sırasında veri doğrulamalarının yapılması sağlanır
     });
     
     return res.status(200)

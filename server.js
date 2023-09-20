@@ -21,7 +21,10 @@ app.use(express.json());
 const PORT = process.env.PORT;
 
 //Routers Middleware
-
+app.use((req, res, next) => {
+    req.headers["mahmut"] = true;
+next();
+});
 app.use("/api", routers);
 
 //Error Handler
